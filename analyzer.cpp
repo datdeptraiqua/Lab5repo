@@ -1,17 +1,38 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
-int main(){
-    int linear_search(int array[],int element);{
-        for(int i = 0; i < 26*26*26*26*26; i++){
-            if (element == array[i]){
-                return i 
-            }
-
+int linear_search(vector<int> array,int element)
+{
+    for(int i = 0; i < array.size(); i++){
+        if (element == array[i]){
+            return i;
         }
-        return -1;
-    }
-    cout<<linear_search([1,2,3,4,5,6,7],7);
-    return 0 ;
 
+    }
+    return -1;
+}
+
+int binary_search(vector<int> array, int element){
+    int low = 0;
+    int high = array.size() - 1;
+    int mid = (high + low)/2;
+    while (low <= high){
+        mid = (high + low)/2;
+        if (array[mid] == element){
+            return mid;
+        }
+        if (array[mid] < element){
+            low = mid + 1;
+        }
+        if (array[mid] > element){
+            high = mid - 1;
+        }
+    }
+    return -1;
+}
+
+int main() {
+    vector<int> array = { 1, 2,3,4,5,6,7};
+    cout<<binary_search(array,7);
 }
